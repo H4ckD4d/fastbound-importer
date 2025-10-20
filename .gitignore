@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+*.log
+
+# Planilhas grandes (opcional evitar subir dados reais)
+*.xlsx
+
+# IDEs/Editor
+.vscode/
+.idea/
