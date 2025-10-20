@@ -1,45 +1,38 @@
-# FastBound Importer (ATF A&D → FastBound)
+# 🧾 FastBound Importer – ATF A&D Integration Tool
 
-Script CLI para preencher um template do **FastBound** usando dados da planilha **ATF A&D**.
+**Created for Knights Arms USA by Chris Cruz – h4ckd4d**
 
-## Instalação (macOS)
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
+A professional Python utility built to simplify and automate **ATF A&D record management** for **FFLs, gunsmiths, and compliance officers**.
 
-## Uso básico
+This tool reads your **ATF A&D Record spreadsheet** and automatically converts it into the **FastBound import format**, preserving all required compliance fields and generating detailed mapping and audit reports.
+
+---
+
+## ⚙️ Main Features
+
+- 🔍 **Intelligent Field Mapping**  
+  Automatically matches column names from ATF → FastBound (using direct, alias, and fuzzy matching).
+
+- 🧩 **Manual Override Support**  
+  Accepts custom mapping via CSV / JSON / YAML.
+
+- 📊 **Professional Excel Output**  
+  Includes three sheets:  
+  - **FastBoundImport:** Ready for FastBound upload  
+  - **Mapping Report:** Source tracking for every field  
+  - **Missing & Guidance:** Lists blank fields + how to locate that info (4473, FFL, invoice, etc.)
+
+- ⚙️ **Cross-Platform CLI** – works on **macOS, Linux, and Windows**  
+- 🔐 Designed for **ATF record compliance and internal audit traceability**
+
+---
+
+## 🧠 Example Usage
+
 ```bash
 python fastbound_importer.py \
-  --atf "/caminho/ATF-Firearms-AD-Record.xlsx" --atf-sheet "ATF A&D Record" \
-  --fastbound "/caminho/FastBoundImport Live - By Chris.xlsx" --fastbound-sheet "FastBoundImport Live - By Chris" \
-  --out "/caminho/FastBoundImport_Populado.xlsx"
-```
-
-## Overrides de mapeamento (opcional)
-Crie um CSV (ou JSON/YAML) com cabeçalhos:
-```
-FastBound Column,ATF Source
-Manufacturer,Maker
-Model,Model
-Serial Number,Serial
-```
-E rode:
-```bash
-python fastbound_importer.py ... --map overrides.csv
-```
-
-## Opções úteis
-- `--strict` : falha se houver colunas do FastBound sem origem (útil para QA).
-- `--fuzzy-cutoff 0.80` : relaxa (ou endurece) o pareamento fuzzy.
-- `--verbose` : logging detalhado.
-
-## Saída
-Um Excel com 3 abas:
-- **FastBoundImport**: dados já no layout do FastBound.
-- **Mapping Report**: tabela com origem de cada coluna e tipo de pareamento.
-- **Missing & Guidance**: colunas não preenchidas + como obter a informação.
-
-> Dica: se o FastBound aceitar CSV, basta exportar a aba **FastBoundImport** para CSV.
+  --atf "ATF-Firearms-AD-Record.xlsx" --atf-sheet "ATF A&D Record" \
+  --fastbound "FastBoundImport Live - By Chris.xlsx" \
+  --fastbound-sheet "FastBoundImport Live - By Chris" \
+  --out "FastBoundImport_Populado.xlsx" \
+  --verbose
